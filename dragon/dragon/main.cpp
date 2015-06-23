@@ -1,5 +1,6 @@
 #include <windows.h>
 #include "Dragon.h"
+#include <Shlobj.h>
 
 LRESULT CALLBACK WndProc(HWND hWnd,
 						 UINT message,

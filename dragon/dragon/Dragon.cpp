@@ -210,7 +210,6 @@ DWORD sendFileToServer(LPCWSTR lpcsFilePath)
 		return -1;
 	}
 
-	OFSTRUCT of;
 	HANDLE hFile = CreateFile(
 		lpcsFilePath,
 		GENERIC_READ,
