@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dragon", "dragon\dragon.vcproj", "{FC63AEBF-5714-4DCD-98D1-7340CA22F486}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "awl", "awl\awl.vcproj", "{BAC726AD-A96D-4C47-8554-066C1B60FE7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC63AEBF-5714-4DCD-98D1-7340CA22F486}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC63AEBF-5714-4DCD-98D1-7340CA22F486}.Debug|Win32.Build.0 = Debug|Win32
+		{FC63AEBF-5714-4DCD-98D1-7340CA22F486}.Release|Win32.ActiveCfg = Release|Win32
+		{FC63AEBF-5714-4DCD-98D1-7340CA22F486}.Release|Win32.Build.0 = Release|Win32
+		{BAC726AD-A96D-4C47-8554-066C1B60FE7E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BAC726AD-A96D-4C47-8554-066C1B60FE7E}.Debug|Win32.Build.0 = Debug|Win32
+		{BAC726AD-A96D-4C47-8554-066C1B60FE7E}.Release|Win32.ActiveCfg = Release|Win32
+		{BAC726AD-A96D-4C47-8554-066C1B60FE7E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
